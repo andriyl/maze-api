@@ -45,6 +45,10 @@ module.exports = (storage, Sequelize) => {
       allowNull: true,
       defaultValue: {}
     },
+    birthday: {
+      type: Sequelize.DATEONLY,
+      allowNull: false
+    },
   }, {
     classMethods: {
       associate(models) {

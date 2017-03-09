@@ -8,7 +8,8 @@ module.exports = {
       handle: 'markelog',
       about: 'Killa gorilla',
       createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date(),
+      birthday: new Date('2017-03-08'),
     }, {
       id: 2,
       bossId: 1,
@@ -17,7 +18,8 @@ module.exports = {
       about: 'Sexy turtle',
       handle: 'Viestat',
       createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date(),
+      birthday: new Date('1992-05-28'),
     }]);
   },
 

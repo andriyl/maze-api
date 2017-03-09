@@ -7,25 +7,27 @@ describe('/profiles', () => {
 
   beforeEach(() => {
     markelog = {
+      id: 1,
       bossId: 2,
       name: 'Oleg Gaidarenko',
       title: 'Kinda cool developer',
       handle: 'markelog',
       about: 'Killa gorilla',
       createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date(),
+      birthday: new Date('2017-03-08'),
     };
 
     viestat = {
+      id: 2,
       bossId: 1,
       name: 'Andrés C. Viesca Ruiz',
       title: 'Taco developer',
       about: 'Sexy turtle',
       handle: 'Viestat',
-      contacts: JSON.stringify({}),
-      social: JSON.stringify({}),
       createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date(),
+      birthday: new Date('1992-05-28'),
     };
   });
 
@@ -44,6 +46,7 @@ describe('/profiles', () => {
         .expect('Content-Type', /json/)
         .then((res) => {
           expect(res.body.data[0].about).to.equal('Killa gorilla');
+          expect(res.body.data[0].birthday).to.equal('2017-03-07T23:00:00.000Z');
         });
     });
   });
@@ -56,6 +59,7 @@ describe('/profiles', () => {
         .expect('Content-Type', /json/)
         .then((res) => {
           expect(res.body.data.handle).to.equal('markelog');
+          expect(res.body.data.birthday).to.equal('2017-03-07T23:00:00.000Z');
         });
     });
 
@@ -121,7 +125,8 @@ describe('/profiles', () => {
         .put('/profiles/test')
         .send(markelog)
         .expect('Content-Type', /json/)
-        .expect(201);
+        // .expect(201)
+          .then(data => console.log(data));
     });
 
     it('throws validation error', async () => {
