@@ -7,6 +7,7 @@ const attributes = [
   'title',
   'contacts',
   'social',
+  'addresses',
   'birthday',
   'createdAt',
   'joinedAt'

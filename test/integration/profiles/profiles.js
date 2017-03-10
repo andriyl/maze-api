@@ -29,6 +29,18 @@ describe('/profiles', () => {
       handle: 'Viestat',
       createdAt: new Date(),
       updatedAt: new Date(),
+      addresses: {
+        home: {
+          country: 'USA',
+          state: 'Texas',
+          city: 'Paris'
+        },
+        current: {
+          country: 'The Netherlands',
+          province: 'Gelderland',
+          city: 'Bronkhorst'
+        }
+      },
       joinedAt: new Date('988-01-01'),
       birthday: new Date('1992-05-28'),
     };
@@ -73,6 +85,43 @@ describe('/profiles', () => {
           const expected = joinedAt.getDay();
 
           expect(actual).to.equal(expected);
+        });
+    });
+
+    it('respond with all profiles with addresses for Andres', () => {
+      return request(app)
+        .get('/profiles')
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .then((res) => {
+          const actual = res.body.data[1].addresses;
+          const expected = {
+            home: {
+              country: 'USA',
+              state: 'Texas',
+              city: 'Paris'
+            },
+            current: {
+              country: 'The Netherlands',
+              province: 'Gelderland',
+              city: 'Bronkhorst'
+            }
+          };
+
+          expect(actual).to.deep.equal(expected);
+        });
+    });
+
+    it('respond with all profiles with empty addresses for Oleg', () => {
+      return request(app)
+        .get('/profiles')
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .then((res) => {
+          const actual = res.body.data[2].addresses;
+          const expected = {};
+
+          expect(actual).to.deep.equal(expected);
         });
     });
   });
