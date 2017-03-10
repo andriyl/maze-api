@@ -81,10 +81,7 @@ describe('/profiles', () => {
         .expect(200)
         .expect('Content-Type', /json/)
         .then((res) => {
-          const actual = new Date(res.body.data[0].joinedAt).getDay();
-          const expected = joinedAt.getDay();
-
-          expect(actual).to.equal(expected);
+          expect(new Date(res.body.data[0].joinedAt).getDay()).to.equal(joinedAt.getDay());
         });
     });
 
@@ -94,21 +91,7 @@ describe('/profiles', () => {
         .expect(200)
         .expect('Content-Type', /json/)
         .then((res) => {
-          const actual = res.body.data[1].addresses;
-          const expected = {
-            home: {
-              country: 'USA',
-              state: 'Texas',
-              city: 'Paris'
-            },
-            current: {
-              country: 'The Netherlands',
-              province: 'Gelderland',
-              city: 'Bronkhorst'
-            }
-          };
-
-          expect(actual).to.deep.equal(expected);
+          expect(res.body.data[1].addresses).to.deep.equal(viestat.addresses);
         });
     });
 
@@ -118,10 +101,7 @@ describe('/profiles', () => {
         .expect(200)
         .expect('Content-Type', /json/)
         .then((res) => {
-          const actual = res.body.data[2].addresses;
-          const expected = {};
-
-          expect(actual).to.deep.equal(expected);
+          expect(res.body.data[2].addresses).to.deep.equal({});
         });
     });
   });
