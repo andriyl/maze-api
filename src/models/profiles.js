@@ -40,6 +40,11 @@ module.exports = (storage, Sequelize) => {
       allowNull: true,
       defaultValue: {}
     },
+    joinedAt: {
+      type: Sequelize.DATE,
+      allowNull: true,
+      defaultValue: Sequelize.NOW
+    },
     social: {
       type: Sequelize.JSONB,
       allowNull: true,

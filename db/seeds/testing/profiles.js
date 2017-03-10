@@ -9,6 +9,7 @@ module.exports = {
       about: 'Killa gorilla',
       createdAt: new Date(),
       updatedAt: new Date(),
+      joinedAt: new Date(),
       birthday: new Date('2017-03-08'),
     }, {
       id: 2,
@@ -19,6 +20,7 @@ module.exports = {
       handle: 'Viestat',
       createdAt: new Date(),
       updatedAt: new Date(),
+      joinedAt: new Date(),
       birthday: new Date('1992-05-28'),
     }]);
   },

@@ -8,7 +8,8 @@ const attributes = [
   'contacts',
   'social',
   'birthday',
-  'createdAt'
+  'createdAt',
+  'joinedAt'
 ];
 
 const include = [{
